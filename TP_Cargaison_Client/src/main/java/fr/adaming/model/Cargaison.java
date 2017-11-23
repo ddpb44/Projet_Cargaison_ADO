@@ -3,6 +3,7 @@ package fr.adaming.model;
 import java.sql.Date;
 import java.util.List;
 
+
 public abstract class Cargaison {
 	
 	// Attributs
