@@ -21,7 +21,7 @@
 </bean>
 
 <bean id="sessionFactoryBean" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-	<property name="dataSource" ref="dateSourceBean"/>
+	<property name="dataSource" ref="dataSourceBean"/>
 	<property name="packagesToScan" value="fr.adaming.model"/>
 	<property name="hibernateProperties">
 		<props>

@@ -1,5 +1,8 @@
 package fr.adaming.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class CargaisonAerienne extends Cargaison{
 	
 	// Attribut
