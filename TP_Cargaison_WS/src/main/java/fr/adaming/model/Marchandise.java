@@ -1,5 +1,7 @@
 package fr.adaming.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="marchandises")
-public class Marchandise {
+public class Marchandise implements Serializable{
 
 	// Attributs
 	@Id
@@ -88,7 +90,7 @@ public class Marchandise {
 		this.volume = volume;
 	}
 
-	// M�thode toString()
+	// Methode toString()
 	@Override
 	public String toString() {
 		return "Marchandise [numero=" + numero + ", nom=" + nom + ", poids=" + poids + ", volume=" + volume + "]";

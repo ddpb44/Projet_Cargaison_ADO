@@ -1,10 +1,12 @@
 package fr.adaming.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,9 +14,11 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public abstract class Cargaison {
+public abstract class Cargaison implements Serializable{
 	
 	// Attributs
 	@Id
@@ -25,7 +29,9 @@ public abstract class Cargaison {
 	protected double distance;
 	protected Date dateLivraison;
 	
-	@OneToMany(mappedBy="cargaison")
+	@OneToMany(mappedBy="cargaison",fetch=FetchType.EAGER)
+	@JsonIgnore //JSonIgnore utilisé pour empecher la récursion marchandise-cargaison lors de la serialization
+	//Donc a prendre en compte dans les methodes telles que get by keyword ou autre -> deux appels
 	protected List<Marchandise> listeMarchandise;
 	
 	// Constructeurs
@@ -64,6 +70,12 @@ public abstract class Cargaison {
 		this.dateLivraison = dateLivraison;
 	}
 	
+	public List<Marchandise> getListeMarchandise() {
+		return listeMarchandise;
+	}
+	public void setListeMarchandise(List<Marchandise> listeMarchandise) {
+		this.listeMarchandise = listeMarchandise;
+	}
 	// Methode toString()
 	@Override
 	public String toString() {
