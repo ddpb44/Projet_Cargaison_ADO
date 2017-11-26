@@ -1,9 +1,12 @@
 package fr.adaming.model;
 
+import java.io.Serializable;
+import java.sql.Date;
+
 import javax.persistence.Entity;
 
 @Entity
-public class CargaisonRoutiere extends Cargaison{
+public class CargaisonRoutiere extends Cargaison implements Serializable{
 	
 	// Attributs
 	private double temperature;
@@ -15,6 +18,11 @@ public class CargaisonRoutiere extends Cargaison{
 
 	public CargaisonRoutiere(double temperature) {
 		super();
+		this.temperature = temperature;
+	}
+
+	public CargaisonRoutiere(String reference, double distance, Date dateLivraison, double temperature) {
+		super(reference, distance, dateLivraison);
 		this.temperature = temperature;
 	}
 

@@ -1,9 +1,12 @@
 package fr.adaming.model;
 
+import java.io.Serializable;
+import java.sql.Date;
+
 import javax.persistence.Entity;
 
 @Entity
-public class CargaisonAerienne extends Cargaison{
+public class CargaisonAerienne extends Cargaison implements Serializable{
 	
 	// Attribut
 	private double poidsMax;
@@ -15,6 +18,11 @@ public class CargaisonAerienne extends Cargaison{
 
 	public CargaisonAerienne(double poidsMax) {
 		super();
+		this.poidsMax = poidsMax;
+	}
+
+	public CargaisonAerienne(String reference, double distance, Date dateLivraison, double poidsMax) {
+		super(reference, distance, dateLivraison);
 		this.poidsMax = poidsMax;
 	}
 

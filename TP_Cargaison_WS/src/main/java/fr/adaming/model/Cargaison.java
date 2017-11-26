@@ -1,7 +1,7 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -27,6 +29,8 @@ public abstract class Cargaison implements Serializable{
 	protected String reference;
 	
 	protected double distance;
+	
+	@Temporal(TemporalType.DATE)
 	protected Date dateLivraison;
 	
 	@OneToMany(mappedBy="cargaison",fetch=FetchType.EAGER)
