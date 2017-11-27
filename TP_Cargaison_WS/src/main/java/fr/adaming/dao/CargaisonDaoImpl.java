@@ -32,7 +32,8 @@ public class CargaisonDaoImpl implements ICargaisonDao {
 
 	@Override
 	public Cargaison addCargaison(Cargaison newCarg) {
-		return (Cargaison) sf.getCurrentSession().save(newCarg);
+		sf.getCurrentSession().save(newCarg);
+		return newCarg;
 	}
 
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.adaming.model.Cargaison;
 import fr.adaming.model.CargaisonAerienne;
+import fr.adaming.model.CargaisonRoutiere;
 import fr.adaming.service.ICargaisonService;
 
 @RestController
@@ -30,8 +31,15 @@ public class CargaisonRest {
 		return cargoServ.getCargaisonById(sequ);
 	}
 	
-	@RequestMapping(value="/cargaison",method=RequestMethod.POST,produces="application/json",consumes="application/json")
-	public Cargaison addCargaison(@RequestBody Cargaison newCarg){
+	//Si on donne Cargaison directement, apparemment le serveur ne sait pas quoi en faire
+	@RequestMapping(value="/cargaisonA",method=RequestMethod.POST,produces="application/json",consumes="application/json")
+	public Cargaison addCargaison(@RequestBody CargaisonAerienne newCarg){
+		System.out.println(newCarg);
+		return cargoServ.addCargaison(newCarg);
+	}
+	
+	@RequestMapping(value="/cargaisonR",method=RequestMethod.POST,produces="application/json",consumes="application/json")
+	public Cargaison addCargaison(@RequestBody CargaisonRoutiere newCarg){
 		System.out.println(newCarg);
 		return cargoServ.addCargaison(newCarg);
 	}

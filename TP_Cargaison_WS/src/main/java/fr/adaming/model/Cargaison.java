@@ -13,8 +13,11 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
+import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -25,7 +28,8 @@ public abstract class Cargaison implements Serializable{
 	// Attributs
 	@Id
 	@Column(name="id_c")
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	//@GeneratedValue(strategy=GenerationType.IDENTITY) // apparemment utiliser un generateur c'est pourri
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE)// MySQLDialect ne supporte pas les sequences
 	protected String reference;
 	
 	protected double distance;
